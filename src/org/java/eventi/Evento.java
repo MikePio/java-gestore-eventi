@@ -48,13 +48,14 @@ public class Evento {
     return numeroPostiTotali;
   }
 
-  //! private set = lettura
-  private void setNumeroPostiTotali(int numeroPostiTotali) throws Exception{
+  public void setNumeroPostiTotali(int numeroPostiTotali) throws Exception{
 
     // controllo per far sì che il numero di posti totali sia positivo
     if (numeroPostiTotali <= 0) {
       throw new Exception("Ci deve essere almeno un posto totale");
     }
+
+    this.numeroPostiTotali = numeroPostiTotali;
   }
 
   public int getNumeroPostiPrenotati() {
@@ -69,12 +70,12 @@ public class Evento {
     // isBefore confronta data(data inserita) con LocalDate.now()(la data di oggi)
     if(data.isBefore(LocalDate.now())){
       throw new Exception("Non puoi prenotare, l’evento è già passato");
-    }else if(numeroPostiPrenotati < numeroPostiTotali){
+    }else if(numeroPostiPrenotati >= numeroPostiTotali){
       throw new Exception("Non puoi prenotare, non ci sono posti disponibili");
     }else{
       numeroPostiPrenotati++;
-      System.out.println(numeroPostiPrenotati + "Posti Prenotati");
-      System.out.println(numeroPostiTotali + "Posti Totali");
+      // System.out.println(numeroPostiPrenotati + " Posti Prenotati");
+      // System.out.println(numeroPostiTotali + " Posti Totali");
     }
   }
 
@@ -94,10 +95,11 @@ public class Evento {
   @Override
   public String toString() {
     DateTimeFormatter dataFormattata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    return "Titolo evento: " + titolo 
+    return "\nEvento creato\n\nTitolo evento: " + titolo 
     + "\ndata: " + data.format(dataFormattata) 
     + "\nPosti totali: " + numeroPostiTotali
-    + "\nPosti prenotati: " + numeroPostiPrenotati +"\n";
+    + "\nPosti prenotati: " + numeroPostiPrenotati
+    + "\nPosti rimanenti: " + (numeroPostiTotali-numeroPostiPrenotati) +"\n";
   }
 
   public void setNumeroPostiPrenotati(int numeroPostiPrenotati) {
