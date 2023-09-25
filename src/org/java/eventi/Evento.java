@@ -48,7 +48,8 @@ public class Evento {
     return numeroPostiTotali;
   }
 
-  public void setNumeroPostiTotali(int numeroPostiTotali) throws Exception{
+  //! private set = lettura
+  private void setNumeroPostiTotali(int numeroPostiTotali) throws Exception{
 
     // controllo per far sì che il numero di posti totali sia positivo
     if (numeroPostiTotali <= 0) {
@@ -96,7 +97,7 @@ public class Evento {
   public String toString() {
     DateTimeFormatter dataFormattata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     return "\nEvento creato\n\nTitolo evento: " + titolo 
-    + "\ndata: " + data.format(dataFormattata) 
+    + "\nData: " + data.format(dataFormattata) 
     + "\nPosti totali: " + numeroPostiTotali
     + "\nPosti prenotati: " + numeroPostiPrenotati
     + "\nPosti rimanenti: " + (numeroPostiTotali-numeroPostiPrenotati) +"\n";

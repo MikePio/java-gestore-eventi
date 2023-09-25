@@ -1,12 +1,21 @@
 package org.java.eventi;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+		
+		LocalTime ora = null;
+		// BigDecimal prezzo = null;
 
 		try {
 			System.out.println("Crea un nuovo evento: ");
@@ -45,6 +54,18 @@ public class Main {
 			
 			System.out.println(evento1 + "Posti disdetti: " + postiDaDisdire + "\n" );
 			
+			System.out.print("\nInserisci l'ora dell'evento(es: 17:01): ");
+			String oraString = sc.nextLine();
+			ora = LocalTime.parse(oraString);
+			System.out.print("\nInserisci il prezzo del biglietto dell'evento(es: 10.09): ");
+			// BigDecimal con 2 cifre decimali
+			String prezzoStr = sc.next();
+			BigDecimal prezzo = new BigDecimal(prezzoStr);
+
+			Concerto concerto = new Concerto(titolo, data, numeroPostiTotali, ora, prezzo);
+			
+			System.out.println(concerto);
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
