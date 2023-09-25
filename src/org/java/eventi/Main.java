@@ -18,53 +18,55 @@ public class Main {
 		// BigDecimal prezzo = null;
 
 		try {
-			System.out.println("Crea un nuovo evento: ");
+			System.out.println("\nCrea un nuovo evento: ");
 			System.out.print("Inserisci il titolo dell'evento: ");
 			String titolo = sc.nextLine();
+
 			System.out.print("Inserisci la data dell'evento(es: 2033-09-05): ");
 			String dataEvento = sc.nextLine();
 			// dataEvento convertita da stringa a LocalDate
 			LocalDate data = LocalDate.parse(dataEvento);
+
 			System.out.print("Inserisci i posti totali disponibili dell'evento: ");
 			int numeroPostiTotali = Integer.valueOf(sc.nextLine());
 			
-			Evento evento1 = new Evento(titolo, data, numeroPostiTotali);
+			Evento evento = new Evento(titolo, data, numeroPostiTotali);
 
 			// incrementa di 1 posti prenotati oppure stampa l'errore con Exception per il metodo prenota
-			// evento1.prenota();
-			// evento1.prenota();
+			// evento.prenota();
+			// evento.prenota();
 			// decrementa di 1 posti prenotati oppure stampa l'errore con Exception per il metodo disdici
-			// evento1.disdici();
+			// evento.disdici();
 
-			System.out.println(evento1);
+			System.out.println(evento);
 			
-			System.out.print("Quanti posti vuoi prenotare? ");
+			System.out.print("\nQuanti posti vuoi prenotare? ");
 			int postiDaPrenotare = Integer.valueOf(sc.nextLine());
 			for(int i = 0; i<postiDaPrenotare; i++){
-				evento1.prenota();
+				evento.prenota();
 			} 
 			
-			System.out.println(evento1);
+			System.out.println(evento);
 
-			System.out.print("Quanti posti vuoi disdire? ");
+			System.out.print("\nQuanti posti vuoi disdire? ");
 			int postiDaDisdire = Integer.valueOf(sc.nextLine());
 			for(int i = 0; i<postiDaDisdire; i++){
-				evento1.disdici();
+				evento.disdici();
 			} 
 			
-			System.out.println(evento1 + "Posti disdetti: " + postiDaDisdire + "\n" );
+			System.out.println(evento + "\nPosti disdetti: " + postiDaDisdire + "\n" );
 			
 			System.out.print("\nInserisci l'ora dell'evento(es: 17:01): ");
 			String oraString = sc.nextLine();
 			ora = LocalTime.parse(oraString);
+
 			System.out.print("\nInserisci il prezzo del biglietto dell'evento(es: 10.09): ");
-			// BigDecimal con 2 cifre decimali
 			String prezzoStr = sc.next();
 			BigDecimal prezzo = new BigDecimal(prezzoStr);
 
 			Concerto concerto = new Concerto(titolo, data, numeroPostiTotali, ora, prezzo);
 			
-			System.out.println(concerto);
+			System.out.println(evento + " " + concerto);
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

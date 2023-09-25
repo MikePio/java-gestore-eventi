@@ -96,11 +96,11 @@ public class Evento {
   @Override
   public String toString() {
     DateTimeFormatter dataFormattata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    return "\nEvento creato\n\nTitolo evento: " + titolo 
+    return "\nInformazioni evento:\n\nTitolo evento: " + titolo 
     + "\nData: " + data.format(dataFormattata) 
     + "\nPosti totali: " + numeroPostiTotali
     + "\nPosti prenotati: " + numeroPostiPrenotati
-    + "\nPosti rimanenti: " + (numeroPostiTotali-numeroPostiPrenotati) +"\n";
+    + "\nPosti rimanenti: " + (numeroPostiTotali-numeroPostiPrenotati);
   }
 
   public void setNumeroPostiPrenotati(int numeroPostiPrenotati) {
